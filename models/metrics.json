@@ -1,0 +1,1 @@
+{"logistic": {"accuracy": 98.25, "precision": 98.61, "recall": 98.61, "f1": 98.61, "roc_auc": 99.54}, "decision_tree": {"accuracy": 91.23, "precision": 95.59, "recall": 90.28, "f1": 92.86, "roc_auc": 91.57}, "random_forest": {"accuracy": 95.61, "precision": 95.89, "recall": 97.22, "f1": 96.55, "roc_auc": 99.39}}

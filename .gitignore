@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+env/
+
+# Models (optional - uncomment if you don't want to push trained models)
+# models/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

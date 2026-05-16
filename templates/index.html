@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Breast Cancer Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">🎗️ CancerSense</div>
+    <div class="nav-links">
+      <a href="/" class="active">Predict</a>
+      <a href="/compare">Model Comparison</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Breast Cancer <span>Predictor</span></h1>
+    <p>Enter diagnostic measurements below. The model will classify the tumor as <strong>Benign</strong> or <strong>Malignant</strong>.</p>
+  </div>
+
+  <div class="container">
+
+    <div class="model-selector-wrap">
+      <label>Choose Model</label>
+      <div class="model-tabs">
+        <button class="tab-btn active" data-model="logistic">Logistic Regression</button>
+        <button class="tab-btn" data-model="decision_tree">Decision Tree</button>
+        <button class="tab-btn" data-model="random_forest">Random Forest</button>
+      </div>
+    </div>
+
+    <form id="predict-form">
+      <div class="section-label">📐 Mean Features</div>
+      <div class="grid" id="mean-grid"></div>
+
+      <div class="section-label">📏 Error Features</div>
+      <div class="grid" id="error-grid"></div>
+
+      <div class="section-label">🔺 Worst Features</div>
+      <div class="grid" id="worst-grid"></div>
+
+      <div class="btn-row">
+        <button type="button" id="fill-sample">Fill Sample Data</button>
+        <button type="submit" id="predict-btn">🔍 Predict</button>
+        <button type="reset" id="reset-btn">Reset</button>
+      </div>
+    </form>
+
+    <div id="result-card" class="result-card hidden">
+      <div class="result-header">
+        <span id="result-icon"></span>
+        <h2 id="result-label"></h2>
+      </div>
+      <p id="result-confidence"></p>
+      <div class="prob-bars">
+        <div>
+          <span>Malignant</span>
+          <div class="bar-track"><div class="bar malignant" id="bar-mal"></div></div>
+          <span id="pct-mal"></span>
+        </div>
+        <div>
+          <span>Benign</span>
+          <div class="bar-track"><div class="bar benign" id="bar-ben"></div></div>
+          <span id="pct-ben"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Feature names injected from Flask
+    const FEATURES = {{ features | tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='js/predict.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Model Comparison — CancerSense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/compare.css') }}"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">🎗️ CancerSense</div>
+    <div class="nav-links">
+      <a href="/">Predict</a>
+      <a href="/compare" class="active">Model Comparison</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Model <span>Comparison</span></h1>
+    <p>Side-by-side performance metrics for all three trained models on the test set.</p>
+  </div>
+
+  <div class="container">
+
+    <div class="cards-row" id="metric-cards"></div>
+
+    <div class="chart-section">
+      <h2>Metrics Overview</h2>
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="table-section">
+      <h2>Detailed Metrics Table</h2>
+      <table id="metrics-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Logistic Regression</th>
+            <th>Decision Tree</th>
+            <th>Random Forest</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+
+    <div class="winner-section" id="winner-section"></div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/compare.js') }}"></script>
+</body>
+</html>
